@@ -5,7 +5,7 @@ This is an alternative firmware for a CC3D board, that allows the board to funct
 
 # Connections
 The firmware expects the CC3D board to be wired in a specific way in order to be able to function. The 4 potentiometers to be used as input need to be connected to the receiver port of the board, channels 3 to 6. The two buttons are to be connected to the receiver port's channel 1 and 2. The potentiometers need to be wired as voltage dividers with the range of 0 V to 3.3 V. The CC3D's output port can be used to provide the voltage for the divider, according to the following schematic:
-![Connection schematic](https://raw.githubusercontent.com/madmaxoft/CC3D-Analog-Joystick/doc/schematic.png)
+![Connection schematic](https://raw.githubusercontent.com/madmaxoft/CC3D-Analog-Joystick/master/doc/schematic.png)
 
 # Flashing the firmware
 In order to use this firmware, you will need to flash it into the CC3D board's STM32F103 chip. For this, you will need:

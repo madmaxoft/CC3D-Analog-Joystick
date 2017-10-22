@@ -21,12 +21,9 @@ Orient the CC3D board so that the F103 chip is facing you, the receiver port is 
 
 Next, fire up the STM firmware flasher tool. In the first page, choose the COM port of your FTDI dongle, leave the other settings as they are (baudrate 115200, parity Even, echo Disabled) and click Next. Immediately the second page of the tool should come up, if not, you didn't bridge the boot pads properly, close the flasher tool, unplug Power and retry. On the flasher's second page, check that it says "target is writable" and "flash size 128 KB", then click Next. On the third page, choose "STM32F1_Med-density_128K" from the dropdown and click Next.
 
-Finally the interesting fourth page. Select the "Download to device" radio button, then click the triple dots next to the file name field. Browse to the CC3D-PPM-Joystick firmware file (.hex or .bin, doesn't matter; don't forget to change the file filter from s19 to hex or bin or you won't see the firmware file). Leave the other options on the fourth page unchanged and click Next.
+Finally the interesting fourth page. Select the "Download to device" radio button, then click the triple dots next to the file name field. Browse to the CC3D-Analog-Joystick firmware file (.hex or .bin, doesn't matter; don't forget to change the file filter from s19 to hex or bin or you won't see the firmware file). Leave the other options on the fourth page unchanged and click Next.
 
 The flasher tool will flash the firmware, a progressbar will be shown and when finished, you can close the tool. You have now flashed the firmware successfully, congratulations. If you soldered the boot pads together, you'll need to remove the bridge now. Remove all the cables from the CC3D board.
-
-# Connecting the boards together
-Connect the CC3D to a computer with a USB cable. The Status LED of the board should light up and the computer should recognize the device as a gamepad / joystick and install the default generic drivers - these are fine, no need for any special drivers. Connect the receiver port harness to the CC3D board and connect your PPM receiver to CH1 on the board. The CC3D board can give power to the receiver through the harness as well, so the whole thing is powered only from the USB port, no need for external power supply. Your joystick is now fully functional.
 
 # Compiling
 To compile this project, you will need:
@@ -38,7 +35,7 @@ The makefile for this project should compile out of the box. If your GNU ARM com
 ```make BINPATH=/home/user/tools/gcc-arm-none-eabi-6-2017-q2-update/bin```
 The build process will place the firmware files into the `build` folder
 
-You can use the CubeMX IDE to modify the project settings, add new pin assignments etc., just open the CC3D-PPM-Joystick.ioc file. Note, however, that if you use the IDE to re-generate the project (i.e. regenerate the Makefile or create a project setup for other IDEs), you will need to revert its changes to the Middleware folder - there is one change to the USB HID class driver there that needs to be kept as-is, otherwise the board will appear as a mouse, rather than a joystick (The USH HID descriptor lives in those library files, unfortunately).
+You can use the CubeMX IDE to modify the project settings, add new pin assignments etc., just open the CC3D-Analog-Joystick.ioc file. Note, however, that if you use the IDE to re-generate the project (i.e. regenerate the Makefile or create a project setup for other IDEs), you will need to revert its changes to the Middleware folder - there is one change to the USB HID class driver there that needs to be kept as-is, otherwise the board will appear as a mouse, rather than a joystick (The USH HID descriptor lives in those library files, unfortunately).
 
 # Acknowledgements
 This project is inspired by @alexeystn's stm32-ppm-usb-adapter ( https://github.com/alexeystn/stm32-ppm-usb-adapter ), which was used as the base for all the user code in the firmware. It has been altered for the CC3D hardware and the code was cleaned up for better understandability. Thanks, Alexey!

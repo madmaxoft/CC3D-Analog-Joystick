@@ -1,0 +1,55 @@
+Used signals:
+=============
+Recv CH1: Button 1
+Recv CH2: Button 2
+Recv CH3: Analog axis 1
+Recv CH4: Analog axis 2
+Recv CH5: Analog axis 3
+Recv CH6: Analog axis 4
+Out CH1: +V
+
+
+
+
+
+Board ports to chip pins:
+-------------------------
+(Pins marked with * are ADC-able in the MCU)
+
+Recv CH1 -> PB6
+Recv CH2 -> PB5
+Recv CH3 -> PB0*
+Recv CH4 -> PB1*
+Recv CH5 -> PA0*
+Recv CH6 -> PA1*
+
+Out CH1 -> PB9
+Out CH2 -> PB8
+Out CH3 -> PB7
+Out CH4 -> PA8
+Out CH5 -> PB4
+Out CH6 -> PA2*
+
+Note that the Out board ports have some sort of filtering on them, I don't know whether it would degrade the ADC performance. And most of them are on non-ADC-able pins anyway.
+
+
+
+Chip pins to board Ports:
+-------------------------
+(Pins marked with * are ADC-able in the MCU)
+
+PA0* -> Recv CH5
+PA1* -> Recv CH6
+PA2* -> Out CH6
+PA8  -> Out CH4
+PB0* -> Recv CH3
+PB1* -> Recv CH4
+PB4  -> Out CH5
+PB5  -> Recv CH2
+PB6  -> Recv CH1
+PB7  -> Out CH3
+PB8  -> Out CH2
+PB9  -> Out CH1
+
+
+
